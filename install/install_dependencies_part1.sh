@@ -14,9 +14,10 @@ source $WORKING_DIR/LArSoft-v04_36_00_03/localProducts_larsoft_v04_36_00_03_e9_p
 # Install myfiltermodule
 echo "Installing the filter"
 cd $MRB_SOURCE
-mrb g https://github.com/loressa/myfiltermodule.git
+git submodule add https://github.com/loressa/myfiltermodule.git
 cd myfiltermodule
 git checkout v04_36_00_03
+mrb uc
 cd $MRB_BUILDDIR
 mrbsetenv
 mrb i
