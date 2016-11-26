@@ -1,0 +1,77 @@
+<?xml version="1.0"?>
+
+<!-- Production Project -->
+
+<!DOCTYPE project [
+<!ENTITY release "v04_36_00_03">
+<!ENTITY file_type "mc">
+<!ENTITY run_type "physics">
+<!ENTITY name "my_prod_chain_cosmic_res">
+<!ENTITY user "asmith">
+]>
+
+<job>
+
+<project name="&name;">
+
+  <!-- Group -->
+  <group>uboone</group>
+
+  <!-- Project size -->
+  <numevents>10</numevents> 
+  <maxfilesperjob>1</maxfilesperjob>
+
+  <!-- Operating System -->
+  <os>SL6</os>
+
+  <!-- Batch resources -->
+  <resource>DEDICATED,OPPORTUNISTIC</resource>
+
+  <!-- Larsoft information -->
+  <larsoft>
+    <tag>&release;</tag>
+    <qual>e9:prof</qual>
+    <local>/uboone/app/users/asmith/gridsub/LArSoft-v04_36_00_03/local.tar</local>
+  </larsoft>
+
+  <!-- Project stages -->
+
+  <stage name="gen">
+    <fcl>/uboone/app/users/asmith/gridsub//LArSoft-v04_36_00_03/my_prodgenie_cosmic_res.fcl</fcl>
+    <outdir>/pnfs/uboone/scratch/users/asmith/&name;</outdir>
+    <logdir>/pnfs/uboone/scratch/users/asmith/&name;</logdir>
+    <workdir>/pnfs/uboone/scratch/users/asmith/work/&name;</workdir>
+    <numjobs>1</numjobs>
+    <datatier>generated</datatier>
+    <defname>&name;_gen</defname>
+  </stage>
+
+  <stage name="g4">
+    <fcl>/uboone/app/users/asmith/gridsub//LArSoft-v04_36_00_03/my_standard_g4_uboone.fcl</fcl>
+    <outdir>/pnfs/uboone/scratch/users/asmith/&name;/g4</outdir>
+    <logdir>/pnfs/uboone/scratch/users/asmith/&name;/g4</logdir>
+    <workdir>/pnfs/uboone/scratch/users/asmith/work/&name;/g4</workdir>
+    <numjobs>1</numjobs>
+    <datatier>simulated</datatier>
+    <defname>&name;_g4</defname>
+  </stage>
+
+  <stage name="detsim">
+    <fcl>standard_detsim_uboone.fcl</fcl>
+    <outdir>/pnfs/uboone/scratch/users/asmith/&name;/detsim</outdir>
+    <logdir>/pnfs/uboone/scratch/users/asmith/&name;/detsim</logdir>
+    <workdir>/pnfs/uboone/scratch/users/asmith/work/&name;/detsim</workdir>
+    <numjobs>1</numjobs>
+    <datatier>detector-simulated</datatier>
+    <defname>&name;_detsim</defname>
+  </stage>
+
+  <!-- file type -->
+  <filetype>&file_type;</filetype>
+
+  <!-- run type -->
+  <runtype>&run_type;</runtype>
+
+</project>
+
+</job>
