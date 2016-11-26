@@ -1,0 +1,93 @@
+<?xml version="1.0"?>
+
+<!-- 
+The following are placeholders that need to be replaced!
+
+USER_NAME
+PROJECT
+NUANCE_CODE
+EVENTS
+MAX_FILES_PER_JOB
+LOCAL_TAR
+WORKING_DIR
+PRODGENIE_FCL
+GEN_JOBS
+G4_JOBS
+DETSIM_JOBS
+
+-->
+<!-- Production Project -->
+
+<!DOCTYPE project [
+<!ENTITY release "v04_36_00_03">
+<!ENTITY file_type "mc">
+<!ENTITY run_type "physics">
+<!ENTITY name "PROJECT_NUANCE_CODE">
+<!ENTITY user "USER_NAME">
+]>
+
+<job>
+
+<project name="&name;">
+
+  <!-- Group -->
+  <group>uboone</group>
+
+  <!-- Project size -->
+  <numevents>EVENTS</numevents> 
+  <maxfilesperjob>MAX_FILES_PER_JOB</maxfilesperjob>
+
+  <!-- Operating System -->
+  <os>SL6</os>
+
+  <!-- Batch resources -->
+  <resource>DEDICATED,OPPORTUNISTIC</resource>
+
+  <!-- Larsoft information -->
+  <larsoft>
+    <tag>&release;</tag>
+    <qual>e9:prof</qual>
+    <local>LOCAL_TAR</local>
+  </larsoft>
+
+  <!-- Project stages -->
+
+  <stage name="gen">
+    <fcl>WORKING_DIR/generic/fcl/PRODGENIE_FCL</fcl>
+    <outdir>/pnfs/uboone/scratch/users/USER_NAME/&name;</outdir>
+    <logdir>/pnfs/uboone/scratch/users/USER_NAME/&name;</logdir>
+    <workdir>/pnfs/uboone/scratch/users/USER_NAME/work/&name;</workdir>
+    <numjobs>GEN_JOBS</numjobs>
+    <datatier>generated</datatier>
+    <defname>&name;_gen</defname>
+  </stage>
+
+  <stage name="g4">
+    <fcl>WORKING_DIR/generic/fcl/my_standard_g4_uboone.fcl</fcl>
+    <outdir>/pnfs/uboone/scratch/users/USER_NAME/&name;/g4</outdir>
+    <logdir>/pnfs/uboone/scratch/users/USER_NAME/&name;/g4</logdir>
+    <workdir>/pnfs/uboone/scratch/users/USER_NAME/work/&name;/g4</workdir>
+    <numjobs>G4_JOBS</numjobs>
+    <datatier>simulated</datatier>
+    <defname>&name;_g4</defname>
+  </stage>
+
+  <stage name="detsim">
+    <fcl>standard_detsim_uboone.fcl</fcl>
+    <outdir>/pnfs/uboone/scratch/users/USER_NAME/&name;/detsim</outdir>
+    <logdir>/pnfs/uboone/scratch/users/USER_NAME/&name;/detsim</logdir>
+    <workdir>/pnfs/uboone/scratch/users/USER_NAME/work/&name;/detsim</workdir>
+    <numjobs>DETSIM_JOBS</numjobs>
+    <datatier>detector-simulated</datatier>
+    <defname>&name;_detsim</defname>
+  </stage>
+
+  <!-- file type -->
+  <filetype>&file_type;</filetype>
+
+  <!-- run type -->
+  <runtype>&run_type;</runtype>
+
+</project>
+
+</job>
