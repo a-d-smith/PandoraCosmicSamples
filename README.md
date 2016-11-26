@@ -32,7 +32,7 @@ source install/install_dependencies_part2.sh
 ```
 
 The next thing you will probably want to do is to produce some samples by first running GENIE, this requires LArSoft-v04_36_00_03 so you will
-once again have to `logout` and see [Starting from a fresh terminal](#Starting-from-a-fresh-terminal) to set set up again.
+once again have to `logout` and see [Starting from a fresh terminal](#Starting-from-a-fresh-terminal) to get set up again.
 
 
 Starting from a fresh terminal
@@ -52,4 +52,9 @@ source setup/setup_all_v05_08_00_05.sh
 If you wish to switch between LArSoft versions, you must use a fresh terminal (or `logout` and log back in again) then source the required setup script.
 
 
+Producing samples
+-----------------
+Once you have setup one of the versions of LArSoft, you can produce samples using the helper functions found under `helper/`. These require you to
+have set up a version of LArSoft for them to work!
 
+See the [README](helper/README.md) file for the helpers for more details
