@@ -33,4 +33,18 @@ source install/install_dependencies_part2.sh
 
 
 
+Starting from a fresh terminal
+------------------------------
+When you log in from a fresh terminal, you will need to set up LArSoft.
+If you wish to run GENIE, G4, Filter or Detsim... Then you will need to set up LArSoft-v04_36_00_03
+```
+source setup/setup_all_v04_36_00_04.sh
+```
+
+If you wish to run Pandora writer on a detsim file to make a .pndr file, then you will need to set up LArSoft-v05_08_00_05
+```
+source setup/setup_all_v05_08_00_05.sh
+```
+
+
 
