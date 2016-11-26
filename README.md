@@ -40,11 +40,14 @@ If you wish to run GENIE, G4, Filter or Detsim... Then you will need to set up L
 ```
 source setup/setup_all_v04_36_00_04.sh
 ```
+You will be asked for your FNAL.GOV password, this is required to allow you to work on the grid!
 
 If you wish to run Pandora writer on a detsim file to make a .pndr file, then you will need to set up LArSoft-v05_08_00_05
 ```
 source setup/setup_all_v05_08_00_05.sh
 ```
+
+If you wish to switch between LArSoft versions, you must use a fresh terminal (or `logout` and log back in again) then source the required setup script.
 
 
 
