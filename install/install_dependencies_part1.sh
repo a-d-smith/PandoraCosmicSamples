@@ -22,3 +22,5 @@ cd $MRB_BUILDDIR
 mrbsetenv
 mrb i
 mrbslp
+
+cd $WORKING_DIR
