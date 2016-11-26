@@ -23,10 +23,14 @@ source install/install_dependencies_part1.sh
 ```
 
 At this point, your terminal is set up for using LArSoft-v04_36_00_03. 
-But, the next thing we want to do is install LArSoft-v05_08_00_05 so you will need to end your ssh session on a fermilab machine, 
+But, the next thing we want to do is install LArSoft-v05_08_00_05 so you will need to end your ssh session on the fermilab machine using `logout`, 
 then log back in again and cd to `PandoraCosmicSamples`
+
+Now install LArSoft-v05_08_00_05 using
 ```
-logout
+source install/install_dependencies_part2.sh
 ```
+
+
 
 
