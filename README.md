@@ -31,6 +31,8 @@ Now install LArSoft-v05_08_00_05 using
 source install/install_dependencies_part2.sh
 ```
 
+The next thing you will probably want to do is to produce some samples by first running GENIE, this requires LArSoft-v04_36_00_03 so you will
+once again have to `logout` and see [Starting from a fresh terminal](#Starting-from-a-fresh-terminal) to set set up again.
 
 
 Starting from a fresh terminal
