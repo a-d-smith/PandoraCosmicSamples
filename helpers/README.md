@@ -10,3 +10,17 @@ Within each project subdirectories are produced for three different interation t
   - CCRES charged pion production (nuance code 1003)
   - CCRES neutral pion production (nuance code 1004)
 
+
+
+new_project.sh
+--------------
+### Brief
+This script will generate a new project of the name supplied
+
+### Arguments
+1. A unique name for your project
+
+Run with
+```
+source new_project.sh myProjectName
+```
