@@ -43,5 +43,5 @@ fi
 nuance=$2
 
 
-echo "Running: project.py --xml $WORKING_DIR/projects/$project/$nuance/prod_chain_$nuance.xml --stage gen --submit"
-project.py --xml $WORKING_DIR/projects/$project/$nuance/prod_chain_$nuance.xml --stage gen --submit
+echo "Running: project.py --xml $WORKING_DIR/projects/$project/$nuance/prod_chain_$nuance.xml --status"
+project.py --xml $WORKING_DIR/projects/$project/$nuance/prod_chain_$nuance.xml --status
