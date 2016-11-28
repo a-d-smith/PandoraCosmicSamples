@@ -8,17 +8,17 @@ A set of helpful scripts to make the production of sampes for pandora easier!
 Getting Started
 ---------------
 Clone this repo from github using
-```
+```bash
 git clone https://github.com/a-d-smith/PandoraCosmicSamples.git
 ```
 
 cd into `PandoraCosmicSamples`. Then check your user area is okay and setup some environment variables using
-```
+```bash
 source install/setup_user_area.sh
 ```
 
 Now install LArSoft-v04_36_00_03, and myfiltermodule using
-```
+```bash
 source install/install_dependencies_part1.sh
 ```
 
@@ -27,7 +27,7 @@ But, the next thing we want to do is install LArSoft-v05_08_00_05 so you will ne
 then log back in again and cd to `PandoraCosmicSamples`
 
 Now install LArSoft-v05_08_00_05 using
-```
+```bash
 source install/install_dependencies_part2.sh
 ```
 
@@ -39,13 +39,13 @@ Starting from a fresh terminal
 ------------------------------
 When you log in from a fresh terminal, you will need to set up LArSoft.
 If you wish to run GENIE, G4, Filter or Detsim... Then you will need to set up LArSoft-v04_36_00_03
-```
+```bash
 source setup/setup_all_v04_36_00_04.sh
 ```
 You will be asked for your FNAL.GOV password, this is required to allow you to work on the grid!
 
 If you wish to run Pandora writer on a detsim file to make a .pndr file, then you will need to set up LArSoft-v05_08_00_05
-```
+```bash
 source setup/setup_all_v05_08_00_05.sh
 ```
 
