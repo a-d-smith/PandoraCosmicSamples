@@ -25,6 +25,65 @@ Below is a list of all the helper functions available
 11. [`job_clean_detsim.sh`](#job_clean_detsimsh)
 12. [`job_status.sh`](#job_statussh)
 
+----------------------------------------------------------------------------------------
+
+How to submit jobs
+------------------
+
+### Make a new project
+First, you will need to make a project. For this example we will call it `my_project`
+```bash
+source helpers/new_project.sh my_project
+```
+You can now now `ls -R projects/my_project` to see how the directory structure works.
+
+
+### Define now many jobs you want
+The production chain produced by `new_project.sh`, to produce some CCQE events (for example) 
+can be found under `projects/my_project/1001/prod_chain_1001.xml`. In here you can set the
+total number of events you want to produce by modifying:
+```xml
+<numevents>1000</numevents> 
+``` 
+
+These events can be split up into multiple jobs, you can set the number of jobs for the 
+generator stage (for example) by modifying this line
+```xml
+<stage name="gen">
+  ...
+  <numjobs>10</numjobs>
+  ...
+</stage>
+```
+The other stages can be modified in a similar way.
+
+### Generator stage
+Once you have set the total number of events, and the number of jobs in which to process
+those events, you can submit your jobs to the grid using:
+```bash
+source helpers/job_submit_gen.sh my_project 1001
+```
+This will run the generator stage. You can then see the status of your jobs by running:
+```bash
+source helpers/job_status.sh my_project 1001
+```
+This will give you a line from `project.py` that looks something like this
+```
+Stage gen batch jobs: 10 idle, 0 running, 0 held, 0 other.
+```
+Keep checking on them until, then have all finished. Once they are done, you need to *check*
+the jobs. This will tell you how many of them succeeded and how many failed. 
+```bash
+source helpers/job_check_gen.sh my_project 1001
+```
+You can then request the path for the output files for your jobs by using
+```bash
+source helpers/job_logs_gen.sh my_project 1001
+```
+This may give you some insight as to what went wrong. 
+
+
+----------------------------------------------------------------------------------------
 
 `new_project.sh`
 --------------
