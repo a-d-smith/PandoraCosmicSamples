@@ -19,7 +19,7 @@ This script will generate a new project of the name supplied
 
 ### Arguments
 ```bash
-source new_project.sh myProjectName
+source helpers/new_project.sh myProjectName
 ```
 1. A unique name for your project
 
@@ -46,6 +46,6 @@ This script will recomplile my filter and make a new tarball for each of the nua
 
 ### Arguments
 ```bash
-source new_project.sh myProjectName
+source helpers/rebuild_filter.sh myProjectName
 ```
 1. A unique name for your project
