@@ -12,7 +12,18 @@ Within each project subdirectories are produced for three different interation t
 
 Below is a list of all the helper functions available
 
-1. [`new_project.sh`](#new_project.sh) 
+1. [`new_project.sh`](#new_projectsh) 
+2. [`rebuild_filter.sh`](#rebuild_filtersh) 
+3. [`job_submit_gen.sh`](#job_submit_gensh)
+4. [`job_submit_g4.sh`](#job_submit_g4sh)
+5. [`job_submit_detsim.sh`](#job_submit_detsimsh)
+6. [`job_check_gen.sh`](#job_check_gensh)
+6. [`job_check_g4.sh`](#job_check_g4sh)
+6. [`job_check_detsim.sh`](#job_check_detsimsh)
+6. [`job_clean_gen.sh`](#job_clean_gensh)
+6. [`job_clean_g4.sh`](#job_cleab_g4sh)
+6. [`job_clean_detsim.sh`](#job_clean_detsimsh)
+6. [`job_status.sh`](#job_statussh)
 
 
 `new_project.sh`
@@ -41,8 +52,8 @@ with `rebuild_filter.fcl`.
 
 
 
-rebuild_filter.sh
------------------
+`rebuild_filter.sh`
+-------------------
 This script will recomplile my filter and make a new tarball for each of the nuance codes
 
 ### Arguments
