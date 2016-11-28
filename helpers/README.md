@@ -12,18 +12,18 @@ Within each project subdirectories are produced for three different interation t
 
 Below is a list of all the helper functions available
 
-1. [`new_project.sh`](#new_projectsh) 
-2. [`rebuild_filter.sh`](#rebuild_filtersh) 
-3. [`job_submit_gen.sh`](#job_submit_gensh)
-4. [`job_submit_g4.sh`](#job_submit_g4sh)
-5. [`job_submit_detsim.sh`](#job_submit_detsimsh)
-6. [`job_check_gen.sh`](#job_check_gensh)
-6. [`job_check_g4.sh`](#job_check_g4sh)
-6. [`job_check_detsim.sh`](#job_check_detsimsh)
-6. [`job_clean_gen.sh`](#job_clean_gensh)
-6. [`job_clean_g4.sh`](#job_cleab_g4sh)
-6. [`job_clean_detsim.sh`](#job_clean_detsimsh)
-6. [`job_status.sh`](#job_statussh)
+1.  [`new_project.sh`](#new_projectsh) 
+2.  [`rebuild_filter.sh`](#rebuild_filtersh) 
+3.  [`job_submit_gen.sh`](#job_submit_gensh)
+4.  [`job_submit_g4.sh`](#job_submit_g4sh)
+5.  [`job_submit_detsim.sh`](#job_submit_detsimsh)
+6.  [`job_check_gen.sh`](#job_check_gensh)
+7.  [`job_check_g4.sh`](#job_check_g4sh)
+8.  [`job_check_detsim.sh`](#job_check_detsimsh)
+9.  [`job_clean_gen.sh`](#job_clean_gensh)
+10. [`job_clean_g4.sh`](#job_cleab_g4sh)
+11. [`job_clean_detsim.sh`](#job_clean_detsimsh)
+12. [`job_status.sh`](#job_statussh)
 
 
 `new_project.sh`
@@ -54,10 +54,52 @@ with `rebuild_filter.fcl`.
 
 `rebuild_filter.sh`
 -------------------
-This script will recomplile my filter and make a new tarball for each of the nuance codes
+This script will recomplile my filter and make a new tarball for each of the nuance codes (see [`new_project.sh`](#new_projectsh) for more details)
 
 ### Arguments
 ```bash
 source helpers/rebuild_filter.sh myProjectName
 ```
 1. A unique name for your project
+
+
+
+`job_submit_gen.sh`
+-------------------
+This script will submit your jobs to the grid for the generator stage using `project.py`.
+
+### Arguments
+```bash
+source helpers/job_submit_gen.sh myProjectName nuanceCode
+```
+1. The name of your project
+2. The nuance code you wish to submit (1001, 1003 or 1004)
+
+
+
+`job_submit_g4.sh`
+------------------
+This script will submit your jobs to the grid for the g4 and filtering stage using `project.py`.
+
+### Arguments
+```bash
+source helpers/job_submit_gen.sh myProjectName nuanceCode
+```
+1. The name of your project
+2. The nuance code you wish to submit (1001, 1003 or 1004)
+
+
+
+`job_submit_detsim.sh`
+-------------------
+This script will submit your jobs to the grid for the detsim stage using `project.py`.
+As the detsim files quickly get very large, if you are producing a large number of events, you will need
+to run a portion of your events through detim, then produce (smaller) pndr files, then remove your detsim outputs
+and repeat. This can be done using *******.sh 
+
+### Arguments
+```bash
+source helpers/job_submit_gen.sh myProjectName nuanceCode
+```
+1. The name of your project
+2. The nuance code you wish to submit (1001, 1003 or 1004)
