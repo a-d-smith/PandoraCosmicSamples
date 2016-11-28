@@ -12,11 +12,11 @@ Within each project subdirectories are produced for three different interation t
 
 Below is a list of all the helper functions available
 
-1. [`new_project.sh`](new_project.sh) 
+1. [`new_project.sh`](New-Project) 
 
 
-new_project.sh
---------------
+New Project [`new_project.sh`](new_project.sh)
+----------------------------------------------
 This script will generate a new project of the name supplied
 
 ### Arguments
