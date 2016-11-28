@@ -87,7 +87,11 @@ You can then request the path for the output files for your jobs by using
 ```bash
 source helpers/job_logs_gen.sh my_project 1001
 ```
-This may give you some insight as to what went wrong. 
+This may give you some insight as to what went wrong.
+
+#### Known issue
+Most frequently, the issue is something related to "negative interaction probability" in 
+GENIE. The best way forward seems to be to discard that job and continue anyway.
 
 
 ----------------------------------------------------------------------------------------
