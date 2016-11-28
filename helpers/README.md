@@ -37,3 +37,15 @@ If you wish to modify the filter algorithm, you must re-build it and produce a t
 with `rebuild_filter.fcl`.
 3. **detsim**. This is just the standard detector simulation with no modifications
 
+
+
+rebuild_filter.sh
+-----------------
+### Brief
+This script will recomplile my filter and make a new tarball for each of the nuance codes
+
+### Arguments
+```bash
+source new_project.sh myProjectName
+```
+1. A unique name for your project
