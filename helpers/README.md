@@ -24,6 +24,9 @@ Below is a list of all the helper functions available
 10. [`job_clean_g4.sh`](#job_cleab_g4sh)
 11. [`job_clean_detsim.sh`](#job_clean_detsimsh)
 12. [`job_status.sh`](#job_statussh)
+13. [`job_logs_gen.sh`](#job_logs_gensh)
+14. [`job_logs_g4.sh`](#job_logs_g4sh)
+15. [`job_logs_detsim.sh`](#job_logs_detsimsh)
 
 ----------------------------------------------------------------------------------------
 
@@ -52,6 +55,8 @@ total number of events you want to produce by modifying:
 ```xml
 <numevents>1000</numevents> 
 ``` 
+**Note**. This will not be the number of events you will end up with! Some jobs will probably fail, 
+and since we are filtering events based on nuance code, you will always loose events.
 
 These events can be split up into multiple jobs, you can set the number of jobs for the 
 generator stage (for example) by modifying this line
@@ -78,7 +83,7 @@ This will give you a line from `project.py` that looks something like this
 ```
 Stage gen batch jobs: 10 idle, 0 running, 0 held, 0 other.
 ```
-Keep checking on them until, then have all finished. Once they are done, you need to *check*
+Keep checking on them until they have all finished. Once they are done, you need to *check*
 the jobs. This will tell you how many of them succeeded and how many failed. 
 ```bash
 source helpers/job_check_gen.sh my_project 1001
@@ -161,15 +166,34 @@ source helpers/job_submit_gen.sh myProjectName nuanceCode
 
 
 `job_submit_detsim.sh`
--------------------
-This script will submit your jobs to the grid for the detsim stage using `project.py`.
-As the detsim files quickly get very large, if you are producing a large number of events, you will need
-to run a portion of your events through detim, then produce (smaller) pndr files, then remove your detsim outputs
-and repeat. This can be done using *******.sh 
+----------------------
 
-### Arguments
-```bash
-source helpers/job_submit_gen.sh myProjectName nuanceCode
-```
-1. The name of your project
-2. The nuance code you wish to submit (1001, 1003 or 1004)
+`job_check_gen.sh`
+----------------------
+
+`job_check_g4.sh`
+----------------------
+
+`job_check_detsim.sh`
+----------------------
+
+`job_clean_gen.sh`
+----------------------
+
+`job_clean_g4.sh`
+----------------------
+
+`job_clean_detsim.sh`
+----------------------
+
+`job_status.sh`
+----------------------
+
+`job_logs_gen.sh`
+----------------------
+
+`job_logs_g4.sh`
+----------------------
+
+`job_logs_detsim.sh`
+----------------------
