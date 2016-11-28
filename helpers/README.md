@@ -18,9 +18,8 @@ new_project.sh
 This script will generate a new project of the name supplied
 
 ### Arguments
-1. A unique name for your project
-
-Run with
-```
+```bash
 source new_project.sh myProjectName
 ```
+1. A unique name for your project
+
