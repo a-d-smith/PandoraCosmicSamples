@@ -56,12 +56,5 @@ Producing samples
 Once you have setup one of the versions of LArSoft, you can produce samples using the helper functions found under `helpers/`. These require you to
 have set up a version of LArSoft for them to work!
 
-See the [README](helpers/README.md) file for the helpers for more details
-
-First you will have to start a new project 
-```bash
-source helpers/new_project.sh myProjectName
-```
-
-Then you can modify the production chain
+See the [README](helpers/README.md#how-to-submit-jobs) file for the helpers for more details
 

@@ -30,6 +30,13 @@ Below is a list of all the helper functions available
 How to submit jobs
 ------------------
 
+### Make sure you have LArSoft-v4_36_00_03 setup
+The first few stages will require LArSoft-v4_36_00_03. So from a fresh terminal, set it up
+using
+```bash
+source setup/setup_all_v04_36_00_04.sh
+```
+
 ### Make a new project
 First, you will need to make a project. For this example we will call it `my_project`
 ```bash
@@ -39,7 +46,7 @@ You can now now `ls -R projects/my_project` to see how the directory structure w
 
 
 ### Define now many jobs you want
-The production chain produced by `new_project.sh`, to produce some CCQE events (for example) 
+The production chain produced by `new_project.sh` for the production of some CCQE events (for example) 
 can be found under `projects/my_project/1001/prod_chain_1001.xml`. In here you can set the
 total number of events you want to produce by modifying:
 ```xml
