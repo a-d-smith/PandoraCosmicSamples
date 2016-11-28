@@ -10,11 +10,13 @@ Within each project subdirectories are produced for three different interation t
   - CCRES charged pion production (nuance code 1003)
   - CCRES neutral pion production (nuance code 1004)
 
+Below is a list of all the helper functions available
+
+1. [`new_project.sh`](new_project.sh) 
 
 
 new_project.sh
 --------------
-### Brief
 This script will generate a new project of the name supplied
 
 ### Arguments
@@ -41,7 +43,6 @@ with `rebuild_filter.fcl`.
 
 rebuild_filter.sh
 -----------------
-### Brief
 This script will recomplile my filter and make a new tarball for each of the nuance codes
 
 ### Arguments
