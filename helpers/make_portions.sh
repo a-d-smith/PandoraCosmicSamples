@@ -59,6 +59,6 @@ while read line; do
     portions=$(($portions + 1))
     total=0
   fi
-  echo $file > '$WORKING_DIR/projects/'`echo $project`'/portion_'`echo $portions`
+  echo $file > `echo $WORKING_DIR`'/projects/'`echo $project`'/portion_'`echo $portions`
 done < `echo $WORKING_DIR`'/projects/'`echo $project`'/g4_events.list'
 
