@@ -47,7 +47,7 @@ nuance=$2
 cp '/pnfs/uboone/scratch/users/'`echo $USER_NAME`'/'`echo $project`'_'`echo $nuance`'/g4/events.list' $WORKING_DIR/projects/$project/g4_events.list
 
 # Ideally we want around 10 events to run through detsim so the files don't get huge
-for line in $WORKING_DIR/projects/$project/g4_events.list; do
+for line in `cat $WORKING_DIR/projects/$project/g4_events.list`; do
   echo $line
 done 
 
