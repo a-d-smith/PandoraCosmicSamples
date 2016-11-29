@@ -60,5 +60,5 @@ while read line; do
     total=0
   fi
   echo $file > `echo $WORKING_DIR`'/projects/'`echo $project`'/portion_'`echo $portions`
-done < `echo $WORKING_DIR`'/projects/'`echo $project`'/'`echo $nuance`'g4_events.list'
+done < `echo $WORKING_DIR`'/projects/'`echo $project`'/'`echo $nuance`'/g4_events.list'
 
