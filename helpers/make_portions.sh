@@ -53,9 +53,8 @@ portions=0
 while read line; do
   file=`echo $line | cut -f1 -d' '`
   n=`echo $line | cut -f2 -d' '`
-  if [ $(($total + $n)) <= 10 ]; then
+  if [ $(($total + $n)) -le 10 ]; then
     total=$(($total + $n))
-    echo $total ':' $n ':' $portions
   else
     portions=$(($portions + 1))
     total=0
