@@ -44,7 +44,7 @@ nuance=$2
 
 
 # Get a copy of the events list for the g4 stage
-cp '/pnfs/uboone/scratch/users/'`echo $USER_NAME`'/'`echo $project`'_'`echo $nuance`'/g4/events.list' $WORKING_DIR/projects/$project/g4_events.list
+cp '/pnfs/uboone/scratch/users/'`echo $USER_NAME`'/'`echo $project`'_'`echo $nuance`'/g4/events.list' `echo $WORKING_DIR`'/projects/'`echo $project`'/g4_events.list'
 
 # Ideally we want around 10 events to run through detsim so the files don't get huge
 # We will just keep adding files together until the total number of events gets to 10 or above
@@ -59,6 +59,6 @@ while read line; do
     portions=$(($portions + 1))
     total=0
   fi
-  echo $file > '$WORKING_DIR/projects/$project/portion_'`echo $portions`
-done < $WORKING_DIR/projects/$project/g4_events.list
+  echo $file > '$WORKING_DIR/projects/'`echo $project`'/portion_'`echo $portions`
+done < `echo $WORKING_DIR`'/projects/'`echo $project`'/g4_events.list'
 
