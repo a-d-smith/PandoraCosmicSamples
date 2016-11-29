@@ -47,7 +47,18 @@ nuance=$2
 cp '/pnfs/uboone/scratch/users/'`echo $USER_NAME`'/'`echo $project`'_'`echo $nuance`'/g4/events.list' $WORKING_DIR/projects/$project/g4_events.list
 
 # Ideally we want around 10 events to run through detsim so the files don't get huge
+# We will just keep adding files together until the total number of events gets to 10 or above
+total=0
+portions=0
 while read line; do
-  echo $line
+  file=`echo $line | cut -f1 -d' '`
+  n=`echo $line | cut -f2 -d' '`
+  if [ $(($total + $n)) <= 10 ]; then
+    total=$(($total + $n))
+  else
+    portions=$(($portions + 1))
+    total=0
+  fi
+  echo $file > '$WORKING_DIR/projects/$project/portion_'`echo $portions`
 done < $WORKING_DIR/projects/$project/g4_events.list
 
