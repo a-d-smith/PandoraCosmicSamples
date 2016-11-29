@@ -57,8 +57,8 @@ while read line; do
     total=$(($total + $n))
   else
     portions=$(($portions + 1))
-    total=0
+    total=$n
   fi
-  echo $file > `echo $WORKING_DIR`'/projects/'`echo $project`'/'`echo $nuance`'/portion_'`echo $portions`
+  echo $file >> `echo $WORKING_DIR`'/projects/'`echo $project`'/'`echo $nuance`'/portion_'`echo $portions`
 done < `echo $WORKING_DIR`'/projects/'`echo $project`'/'`echo $nuance`'/g4_events.list'
 
