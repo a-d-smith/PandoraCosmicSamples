@@ -44,4 +44,4 @@ nuance=$2
 
 
 echo "Output file paths:"
-find '/pnfs/uboone/scratch/users/'`echo $USER_NAME`'/'`echo $project`'_'`echo $nuance`'/g4' -maxdepth 2 -name "lar.out"
+find '/pnfs/uboone/scratch/users/'`echo $USER_NAME`'/'`echo $project`'_'`echo $nuance`'/detsim' -maxdepth 2 -name "lar.out"
