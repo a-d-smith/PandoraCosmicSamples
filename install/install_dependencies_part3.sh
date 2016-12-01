@@ -18,7 +18,7 @@ cd $WORKING_DIR
 echo "Installing LArSoft-v06_15_01"
 
 source /cvmfs/uboone.opensciencegrid.org/products/setup_uboone.sh
-setup uboonecode v06_15_01 -q e9:prof
+setup uboonecode v06_15_01 -q e10:prof
 mkdir LArSoft-v06_15_01
 cd LArSoft-v06_15_01
 mrb newDev
