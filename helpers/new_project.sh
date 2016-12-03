@@ -74,7 +74,7 @@ if [ $2 != 0 ]; then
   genJobs=`bc -l <<< $genEvents'/10'`
   genJobs=`printf '%.*f' 0 $genJobs`
 
-  sed -i -e 's,EVENTS,'`echo $genEvents`',g' prod_chain_1001.xml
+  sed -i -e 's,GEN_EVENTS,'`echo $genEvents`',g' prod_chain_1001.xml
   sed -i -e 's,GEN_JOBS,'`echo $genJobs`',g' prod_chain_1001.xml
  
   # Modify the filter, build it and make the tar
@@ -105,8 +105,8 @@ if [ $3 != 0 ]; then
   genJobs=`bc -l <<< $genEvents'/10'`
   genJobs=`printf '%.*f' 0 $genJobs`
 
-  sed -i -e 's,EVENTS,'`echo $genEvents`',g' prod_chain_1001.xml
-  sed -i -e 's,GEN_JOBS,'`echo $genJobs`',g' prod_chain_1001.xml
+  sed -i -e 's,GEN_EVENTS,'`echo $genEvents`',g' prod_chain_1003.xml
+  sed -i -e 's,GEN_JOBS,'`echo $genJobs`',g' prod_chain_1003.xml
   
   # Modify the filter, build it and make the tar
   cp $WORKING_DIR/generic/fcl/myfilter.fcl $MRB_SOURCE/myfiltermodule/myfiltermodule/.
@@ -136,8 +136,8 @@ if [ $4 != 0 ]; then
   genJobs=`bc -l <<< $genEvents'/10'`
   genJobs=`printf '%.*f' 0 $genJobs`
 
-  sed -i -e 's,EVENTS,'`echo $genEvents`',g' prod_chain_1001.xml
-  sed -i -e 's,GEN_JOBS,'`echo $genJobs`',g' prod_chain_1001.xml
+  sed -i -e 's,GEN_EVENTS,'`echo $genEvents`',g' prod_chain_1004.xml
+  sed -i -e 's,GEN_JOBS,'`echo $genJobs`',g' prod_chain_1004.xml
 
   # Modify the filter, build it and make the tar
   cp $WORKING_DIR/generic/fcl/myfilter.fcl $MRB_SOURCE/myfiltermodule/myfiltermodule/.

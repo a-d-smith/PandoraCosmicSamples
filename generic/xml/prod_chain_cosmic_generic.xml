@@ -18,7 +18,7 @@
   <group>uboone</group>
 
   <!-- Project size -->
-  <numevents>EVENTS</numevents> 
+  <numevents>GEN_EVENTS</numevents> 
   <maxfilesperjob>1</maxfilesperjob>
 
   <!-- Operating System -->
