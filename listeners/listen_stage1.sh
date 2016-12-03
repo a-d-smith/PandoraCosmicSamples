@@ -2,11 +2,15 @@
 
 if [ ! -f $WORKING_DIR/listeners/stage ]; then
   echo 0 >> $WORKING_DIR/listeners/stage
+  echo 0 >> $WORKING_DIR/listeners/action
 fi
 
 # GENIE stage
 if [ `cat $WORKING_DIR/listeners/stage` == 1 ]; then
-  echo 'GENIE'
+  # Check if we need to submit jobs
+  if [ `cat $WORKING_DIR/listeners/action` == 0 ]; then
+        
+  fi
 fi
 
 # G4 + Filter Stage
