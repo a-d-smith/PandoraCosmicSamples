@@ -76,6 +76,8 @@ if [ $2 != 0 ]; then
 
   sed -i -e 's,GEN_EVENTS,'`echo $genEvents`',g' prod_chain_1001.xml
   sed -i -e 's,GEN_JOBS,'`echo $genJobs`',g' prod_chain_1001.xml
+  sed -i -e 's,G4_EVENTS,0,g' prod_chain_1001.xml
+  sed -i -e 's,G4_JOBS,0,g' prod_chain_1001.xml
 
   echo $2 > requestedEvents
   echo $genEvents > genEvents
@@ -111,6 +113,8 @@ if [ $3 != 0 ]; then
 
   sed -i -e 's,GEN_EVENTS,'`echo $genEvents`',g' prod_chain_1003.xml
   sed -i -e 's,GEN_JOBS,'`echo $genJobs`',g' prod_chain_1003.xml
+  sed -i -e 's,G4_EVENTS,0,g' prod_chain_1003.xml
+  sed -i -e 's,G4_JOBS,0,g' prod_chain_1003.xml
 
   echo $3 > requestedEvents
   echo $genEvents > genEvents
@@ -146,6 +150,8 @@ if [ $4 != 0 ]; then
 
   sed -i -e 's,GEN_EVENTS,'`echo $genEvents`',g' prod_chain_1004.xml
   sed -i -e 's,GEN_JOBS,'`echo $genJobs`',g' prod_chain_1004.xml
+  sed -i -e 's,G4_EVENTS,0,g' prod_chain_1004.xml
+  sed -i -e 's,G4_JOBS,0,g' prod_chain_1004.xml
 
   echo $4 > requestedEvents
   echo $genEvents > genEvents
