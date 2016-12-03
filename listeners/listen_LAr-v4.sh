@@ -8,9 +8,9 @@ fi
 project=$1
 
 if [ ! -f $WORKING_DIR/listeners/stage ]; then
-  echo 0 >> $WORKING_DIR/listeners/stage
-  echo 0 >> $WORKING_DIR/listeners/action
-  echo 1001 >> $WORKING_DIR/listeners/nuance
+  echo 0 > $WORKING_DIR/listeners/stage
+  echo 0 > $WORKING_DIR/listeners/action
+  echo 1001 > $WORKING_DIR/listeners/nuance
 fi
 
 stage=`cat $WORKING_DIR/listeners/stage`
@@ -39,7 +39,7 @@ if [ $stage == 1 ]; then
     genJobs=`cat $WORKING_DIR/projects/$project/$nuance/genEvents | cut -f2 -d' '`
     echo 'Status: Submitting '$genEvents' over '$genJobs' jobs'
     source $WORKING_DIR/helpers/job_submit_gen.sh $project $nuance
-    echo 2 >> $WORKING_DIR/listeners/action
+    echo 2 > $WORKING_DIR/listeners/action
   elif [ $action == 2 ]; then
     # action = 2 -> Wait for jobs to finish
     echo 'Status: Waiting for jobs to finish'
@@ -48,13 +48,13 @@ if [ $stage == 1 ]; then
     genJobs=`cat $WORKING_DIR/projects/$project/$nuance/genEvents | cut -f2 -d' '`
     echo $genJobsDone' jobs complete of a total '$genJobs
     if [ $genJobsDone == $genJobs ]; then
-      echo 3 >> $WORKING_DIR/listeners/action 
+      echo 3 > $WORKING_DIR/listeners/action 
     fi
   elif [ $action == 3 ]; then
     # action = 3 -> Check jobs
     echo 'Status: Checking jobs for good events'
     source $WORKING_DIR/helpers/job_check_gen.sh $project $nuance
-    echo 4 >> $WORKING_DIR/listeners/action
+    echo 4 > $WORKING_DIR/listeners/action
   elif [ $action == 4]; then
     # action = 4 -> Prepare XML file for next stage
     echo 'Status: Preparing for G4 + Filter'
@@ -65,14 +65,14 @@ if [ $stage == 1 ]; then
     done < '/pnfs/uboone/scratch/users/'$USER_NAME'/'$project'_'$nuance'/events.list'
     g4Jobs=`bc -l <<< $g4Events'/10'`
     g4Jobs=`printf '%.*f' 0 $g4Jobs`
-    echo $g4Events >> $WORKING_DIR/projects/$project/$nuance/g4Events
-    echo $g4Jobs > $WORKING_DIR/projects/$project/$nuance/g4Events
+    echo $g4Events > $WORKING_DIR/projects/$project/$nuance/g4Events
+    echo $g4Jobs >> $WORKING_DIR/projects/$project/$nuance/g4Events
 
     sed -i -e 's,G4_EVENTS,'$g4Events',g' $WORKING_DIR'/projects/'$project'/'$nuance'/prod_chain_'$nuance'.xml'
     sed -i -e 's,G4_JOBS,'$g4Jobs',g' $WORKING_DIR'/projects/'$project'/'$nuance'/prod_chain_'$nuance'.xml'
 
-    echo 0 >> $WORKING_DIR/listeners/action
-    echo 2 >> $WORKING_DIR/listeners/stage
+    echo 0 > $WORKING_DIR/listeners/action
+    echo 2 > $WORKING_DIR/listeners/stage
   fi
 elif [ $stage -gt 1 ]; then
   genEvents=`cat $WORKING_DIR/projects/$project/$nuance/genEvents | cut -f1 -d' '`
