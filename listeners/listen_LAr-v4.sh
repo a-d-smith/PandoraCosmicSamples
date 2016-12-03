@@ -1,6 +1,6 @@
 #!/bin/bash
 
-if [ $# != 1 ]; then
+if [ $# -ne 1 ]; then
   echo "Error: Please pass the name of the project as an argument"
   return
 fi
