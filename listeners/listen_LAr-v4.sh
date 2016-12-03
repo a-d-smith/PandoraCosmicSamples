@@ -19,8 +19,8 @@ nuance=`cat $WORKING_DIR/listeners/nuance`
 totEvents=`cat $WORKING_DIR/projects/$project/$nuance/requestedEvents`
 
 # Clear the terminal
-tput cup 0 0 
-tput ed 
+#tput cup 0 0 
+#tput ed 
 
 echo 'Project: '$project
 echo '================================================================================'
