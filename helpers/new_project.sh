@@ -70,9 +70,9 @@ if [ $2 != 0 ]; then
   sed -i -e 's,PRODGENIE_FCL,my_prodgenie_cosmic_ccqe.fcl,g' prod_chain_1001.xml
  
   genEvents=`bc -l <<< $2'/0.35'`
-  genEvents=`printf '%.*f' 0 $genEvents`
   genJobs=`bc -l <<< $genEvents'/10'`
   genJobs=`printf '%.*f' 0 $genJobs`
+  genEvents=`bc -l <<< $genJobs'*10'`
 
   sed -i -e 's,GEN_EVENTS,'`echo $genEvents`',g' prod_chain_1001.xml
   sed -i -e 's,GEN_JOBS,'`echo $genJobs`',g' prod_chain_1001.xml
@@ -109,9 +109,9 @@ if [ $3 != 0 ]; then
   sed -i -e 's,PRODGENIE_FCL,my_prodgenie_cosmic_res.fcl,g' prod_chain_1003.xml
 
   genEvents=`bc -l <<< $2'/0.17'`
-  genEvents=`printf '%.*f' 0 $genEvents`
   genJobs=`bc -l <<< $genEvents'/10'`
   genJobs=`printf '%.*f' 0 $genJobs`
+  genEvents=`bc -l <<< $genJobs'*10'`
 
   sed -i -e 's,GEN_EVENTS,'`echo $genEvents`',g' prod_chain_1003.xml
   sed -i -e 's,GEN_JOBS,'`echo $genJobs`',g' prod_chain_1003.xml
@@ -148,9 +148,9 @@ if [ $4 != 0 ]; then
   sed -i -e 's,PRODGENIE_FCL,my_prodgenie_cosmic_res.fcl,g' prod_chain_1004.xml
   
   genEvents=`bc -l <<< $2'/0.06'`
-  genEvents=`printf '%.*f' 0 $genEvents`
   genJobs=`bc -l <<< $genEvents'/10'`
   genJobs=`printf '%.*f' 0 $genJobs`
+  genEvents=`printf '%.*f' 0 $genEvents`
 
   sed -i -e 's,GEN_EVENTS,'`echo $genEvents`',g' prod_chain_1004.xml
   sed -i -e 's,GEN_JOBS,'`echo $genJobs`',g' prod_chain_1004.xml
