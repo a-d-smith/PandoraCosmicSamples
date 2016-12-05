@@ -76,10 +76,9 @@ if [ $stage == 1 ]; then
     echo $g4Events > $WORKING_DIR/projects/$project/$nuance/g4Events
     echo $g4Jobs >> $WORKING_DIR/projects/$project/$nuance/g4Events
 
-    sed -i -e 's,G4_EVENTS,'$g4Events',g' $WORKING_DIR'/projects/'$project'/'$nuance'/prod_chain_'$nuance'.xml'
-    sed -i -e 's,G4_JOBS,'$g4Jobs',g' $WORKING_DIR'/projects/'$project'/'$nuance'/prod_chain_'$nuance'.xml'
+    sed -i '/<stage name="g4">/a <numevents>'$g4Events'</numevents> \n <numjobs>'$g4Jobs'</numjobs>' $WORKING_DIR'/projects/'$project'/'$nuance'/prod_chain_'$nuance'.xml'
 
-    echo 0 > $WORKING_DIR/listeners/action
+    echo 1 > $WORKING_DIR/listeners/action
     echo 2 > $WORKING_DIR/listeners/stage
   fi
 elif [ $stage -gt 1 ]; then
