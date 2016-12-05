@@ -151,6 +151,12 @@ if [ $stage == 2 ]; then
     echo 1 > $WORKING_DIR/listeners/action
     echo 3 > $WORKING_DIR/listeners/stage
   fi
+elif [ $stage -gt 1 ]; then
+  g4Events=`cat $WORKING_DIR/projects/$project/$nuance/g4Events | cut -f1 -d$'\n'`
+  g4Jobs=`cat $WORKING_DIR/projects/$project/$nuance/g4Events | cut -f2 -d$'\n'`
+  detsimEvents=`cat $WORKING_DIR/projects/$project/$nuance/detsimEvents | cut -f1 -d$'\n'`
+  echo 'Status: Complete'
+  echo 'Ran '$g4Events' events over '$g4Jobs' jobs, and '$detsimEvents' passed'
 else
   echo 'Status: Waiting...'
 fi
@@ -163,7 +169,67 @@ fi
 echo ''
 # DetSim Stage
 if [ $stage == 3 ]; then
-  echo 'DETSIM'
+  if [ $action == 0 ]; then
+    # action = 0 -> Idle
+    echo 'Status: Idle'
+  elif [ $action == 1 ]; then
+    # action = 1 -> Submit
+    detsimEvents=`cat $WORKING_DIR/projects/$project/$nuance/detsimEvents | cut -f1 -d$'\n'`
+    detsimJobs=`cat $WORKING_DIR/projects/$project/$nuance/detsimEvents | cut -f2 -d$'\n'`
+    echo 'Status: Submitting '$detsimEvents' events over '$detsimJobs' jobs'
+    source $WORKING_DIR/helpers/job_submit_detsim.sh $project $nuance
+    echo 2 > $WORKING_DIR/listeners/action
+  elif [ $action == 2 ]; then
+    # action = 2 -> Wait for jobs to finish
+    echo 'Status: Waiting for jobs to finish'
+    # Count the number of root files we have
+    find /pnfs/uboone/scratch/users/$USER_NAME/$project'_'$nuance/detsim/*/lar.stat -type f > $WORKING_DIR/projects/$project/$nuance/detsimStat
+    detsimJobsDone=0
+    detsimJobsGood=0
+    while read line; do
+      if [ `cat $line` == 0 ]; then
+        detsimJobsGood=$(($detsimJobsGood + 1))
+        filePath=$(readlink -f `dirname $line`)
+        if [ `find $filePath/prodgenie*.root -type f | wc -l` == 1 ]; then
+          detsimJobsDone=$(($detsimJobsDone + 1))
+        fi 
+      else
+        detsimJobsDone=$(($detsimJobsDone + 1))  
+      fi
+    done < $WORKING_DIR/projects/$project/$nuance/detsimStat
+    detsimJobs=`cat $WORKING_DIR/projects/$project/$nuance/detsimEvents | cut -f2 -d$'\n'`
+    echo $detsimJobsDone' jobs complete of a total '$detsimJobs'. '$detsimJobsGood' were successful.'
+    if [ $detsimJobsDone == $detsimJobs ]; then
+      echo 3 > $WORKING_DIR/listeners/action 
+    fi
+  elif [ $action == 3 ]; then
+    # action = 3 -> Check jobs
+    echo 'Status: Checking jobs for good events'
+    source $WORKING_DIR/helpers/job_check_detsim.sh $project $nuance
+    echo 4 > $WORKING_DIR/listeners/action
+  elif [ $action == 4 ]; then
+    # action = 4 -> Prepare XML file for next stage
+    echo 'Status: Preparing for signal processing'
+    signalEvents=0
+    while read line; do
+      n=`echo $line | cut -f2 -d' '`
+      signalEvents=$(($signalEvents + $n))
+    done < '/pnfs/uboone/scratch/users/'$USER_NAME'/'$project'_'$nuance'/detsim/events.list'
+    signalJobs=1
+    #detsimJobs=`bc -l <<< $detsimEvents'/10'`
+    #detsimJobs=`printf '%.*f' 0 $detsimJobs`
+    echo $signalEvents > $WORKING_DIR/projects/$project/$nuance/signalEvents
+    echo $signalJobs >> $WORKING_DIR/projects/$project/$nuance/signalEvents
+
+    echo 1 > $WORKING_DIR/listeners/action
+    echo 4 > $WORKING_DIR/listeners/stage
+  fi
+elif [ $stage -gt 1 ]; then
+  detsimEvents=`cat $WORKING_DIR/projects/$project/$nuance/detsimEvents | cut -f1 -d$'\n'`
+  detsimJobs=`cat $WORKING_DIR/projects/$project/$nuance/detsimEvents | cut -f2 -d$'\n'`
+  signalEvents=`cat $WORKING_DIR/projects/$project/$nuance/signalEvents | cut -f1 -d$'\n'`
+  echo 'Status: Complete'
+  echo 'Ran '$detsimEvents' events over '$detsimJobs' jobs, and '$signalEvents' passed'
 else
   echo 'Status: Waiting...'
 fi
