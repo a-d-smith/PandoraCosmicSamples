@@ -7,6 +7,6 @@ export INDIR=IN_DIR
 export OUTDIR=/pnfs/uboone/scratch/users/USER_NAME/PROJECT_NUANCE/sig/INDEX
 
 ifdh cp ${INDIR}/prodgenie_bnb_nu_cosmic_uboone*.root my_file.root 
-ifdh cp ${USRDIR}/my_signal_processing.fcl . 
+ifdh cp ${USRDIR}/my_signal_processing.fcl my_signal_processing.fcl 
 lar -c my_signal_processing.fcl -n -1 -s my_file.root 
 ifdh cp prodgenie*.root ${OUTDIR}/output_signal_processing.root
