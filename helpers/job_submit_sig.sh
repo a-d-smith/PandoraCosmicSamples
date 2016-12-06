@@ -48,9 +48,32 @@ if [ ! -f /pnfs/uboone/scratch/users/$USER_NAME/$project'_'$nuance/detsim/events
   return
 fi
 
-# Get the number of jobs we require
+# Submit the jobs to the grid manually
+mkdir /pnfs/uboone/scratch/users/$USER_NAME/$project'_'$nuance/sig
+
+index=0
 while read line;
 do
-  echo File: `echo $line | cut -f1 -d' '`
-  echo Events: `echo $line | cut -f2 -d' '`
+  file=`echo $line | cut -f1 -d' '`
+  events=`echo $line | cut -f2 -d' '`
+
+  if [ $events -ne 0 ]; then  
+    mkdir /pnfs/uboone/scratch/users/$USER_NAME/$project'_'$nuance/sig/$index
+  
+    # Make a submission script for this file
+    cp $WORKING_DIR/generic/sh/job_grid_signal_processing.sh $WORKING_DIR/$project/$nuance/job_grid_signal_processing_${project}_${nuance}_${index}.sh
+    sed -i -e 's,USER_NAME,'`echo $USER_NAME`',g' $WORKING_DIR/$project/$nuance/job_grid_signal_processing_${project}_${nuance}_${index}.sh
+    sed -i -e 's,WORKING_DIR,'`echo $WORKING_DIR`',g' $WORKING_DIR/$project/$nuance/job_grid_signal_processing_${project}_${nuance}_${index}.sh
+    sed -i -e 's,PROJECT,'`echo $project`',g' $WORKING_DIR/$project/$nuance/job_grid_signal_processing_${project}_${nuance}_${index}.sh
+    sed -i -e 's,NUANCE,'`echo $nuance`',g' $WORKING_DIR/$project/$nuance/job_grid_signal_processing_${project}_${nuance}_${index}.sh
+    sed -i -e 's,IN_DIR,'`dirname $file`',g' $WORKING_DIR/$project/$nuance/job_grid_signal_processing_${project}_${nuance}_${index}.sh
+    sed -i -e 's,INDEX,'`echo $index`',g' $WORKING_DIR/$project/$nuance/job_grid_signal_processing_${project}_${nuance}_${index}.sh
+
+    #jobsub_submit -N 1 --OS=SL6 --group uboone --role=Analysis file://$WORKING_DIR/$project/$nuance/job_grid_signal_processing_${project}_${nuance}_${index}.sh 
+ 
+    index=$(($index + 1))
+  fi
 done < /pnfs/uboone/scratch/users/$USER_NAME/$project'_'$nuance/detsim/events.list
+
+
+
