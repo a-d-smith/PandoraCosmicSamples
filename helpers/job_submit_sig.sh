@@ -73,7 +73,6 @@ do
     jobsub_submit -N 1 --OS=SL6 --group uboone --role=Analysis file://$WORKING_DIR/projects/$project/$nuance/job_grid_signal_processing_${project}_${nuance}_${index}.sh 
  
     index=$(($index + 1))
-    return
   fi
 done < /pnfs/uboone/scratch/users/$USER_NAME/$project'_'$nuance/detsim/events.list
 
