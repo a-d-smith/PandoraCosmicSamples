@@ -42,7 +42,7 @@ fi
 
 nuance=$2
 
-if [ ! -f /pnfs/uboone/scratch/users/asmith/test1000_1001/detsim/events.list ]; then
+if [ ! -f /pnfs/uboone/scratch/users/$USER_NAME/$project'_'$nuance/detsim/events.list ]; then
   echo "Error: You must check the detsim stage before running this script"
   return
 fi
