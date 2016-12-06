@@ -51,6 +51,6 @@ fi
 # Get the number of jobs we require
 while read line;
 do
-  echo File: `echo line | cut -f1 -d' '`
-  echo Events: `echo line | cut -f2 -d' '`
+  echo File: `echo $line | cut -f1 -d' '`
+  echo Events: `echo $line | cut -f2 -d' '`
 done < /pnfs/uboone/scratch/users/$USER_NAME/$project'_'$nuance/detsim/events.list
