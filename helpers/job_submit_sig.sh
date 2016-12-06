@@ -61,15 +61,15 @@ do
     mkdir /pnfs/uboone/scratch/users/$USER_NAME/$project'_'$nuance/sig/$index
   
     # Make a submission script for this file
-    cp $WORKING_DIR/generic/sh/job_grid_signal_processing.sh $WORKING_DIR/$project/$nuance/job_grid_signal_processing_${project}_${nuance}_${index}.sh
-    sed -i -e 's,USER_NAME,'`echo $USER_NAME`',g' $WORKING_DIR/$project/$nuance/job_grid_signal_processing_${project}_${nuance}_${index}.sh
-    sed -i -e 's,WORKING_DIR,'`echo $WORKING_DIR`',g' $WORKING_DIR/$project/$nuance/job_grid_signal_processing_${project}_${nuance}_${index}.sh
-    sed -i -e 's,PROJECT,'`echo $project`',g' $WORKING_DIR/$project/$nuance/job_grid_signal_processing_${project}_${nuance}_${index}.sh
-    sed -i -e 's,NUANCE,'`echo $nuance`',g' $WORKING_DIR/$project/$nuance/job_grid_signal_processing_${project}_${nuance}_${index}.sh
-    sed -i -e 's,IN_DIR,'`dirname $file`',g' $WORKING_DIR/$project/$nuance/job_grid_signal_processing_${project}_${nuance}_${index}.sh
-    sed -i -e 's,INDEX,'`echo $index`',g' $WORKING_DIR/$project/$nuance/job_grid_signal_processing_${project}_${nuance}_${index}.sh
+    cp $WORKING_DIR/generic/sh/job_grid_signal_processing.sh $WORKING_DIR/projects/$project/$nuance/job_grid_signal_processing_${project}_${nuance}_${index}.sh
+    sed -i -e 's,USER_NAME,'`echo $USER_NAME`',g' $WORKING_DIR/projects/$project/$nuance/job_grid_signal_processing_${project}_${nuance}_${index}.sh
+    sed -i -e 's,WORKING_DIR,'`echo $WORKING_DIR`',g' $WORKING_DIR/projects/$project/$nuance/job_grid_signal_processing_${project}_${nuance}_${index}.sh
+    sed -i -e 's,PROJECT,'`echo $project`',g' $WORKING_DIR/projects/$project/$nuance/job_grid_signal_processing_${project}_${nuance}_${index}.sh
+    sed -i -e 's,NUANCE,'`echo $nuance`',g' $WORKING_DIR/projects/$project/$nuance/job_grid_signal_processing_${project}_${nuance}_${index}.sh
+    sed -i -e 's,IN_DIR,'`dirname $file`',g' $WORKING_DIR/projects/$project/$nuance/job_grid_signal_processing_${project}_${nuance}_${index}.sh
+    sed -i -e 's,INDEX,'`echo $index`',g' $WORKING_DIR/projects/$project/$nuance/job_grid_signal_processing_${project}_${nuance}_${index}.sh
 
-    #jobsub_submit -N 1 --OS=SL6 --group uboone --role=Analysis file://$WORKING_DIR/$project/$nuance/job_grid_signal_processing_${project}_${nuance}_${index}.sh 
+    #jobsub_submit -N 1 --OS=SL6 --group uboone --role=Analysis file://$WORKING_DIR/projects/$project/$nuance/job_grid_signal_processing_${project}_${nuance}_${index}.sh 
  
     index=$(($index + 1))
   fi
