@@ -43,7 +43,8 @@ fi
 nuance=$2
 
 if [ ! -f /pnfs/uboone/scratch/users/$USER_NAME/$project'_'$nuance/detsim/events.list ]; then
-  echo "Error: You must check the detsim stage before running this script"
+  echo "Error: The following file doesn't exist"
+  echo /pnfs/uboone/scratch/users/$USER_NAME/$project'_'$nuance/detsim/events.list
   return
 fi
 
