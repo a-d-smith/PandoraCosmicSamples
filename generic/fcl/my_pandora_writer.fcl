@@ -7,12 +7,12 @@ services.DetectorClocksService.InheritClockConfig:  false
 # Cosmic 1 file production
 physics.producers.pandoraWriter1: @local::microboone_pandorawriter 
 physics.producers.pandoraWriter1.HitFinderModuleLabel: "gaushit" 
-physics.producers.pandoraWriter1.ConfigFile: "MyPandoraSettings_Write_pre_INDEX.xml" 
+physics.producers.pandoraWriter1.ConfigFile: "MyPandoraSettings_Write_cosmic1.xml" 
 
 # Cosmic 2 file production
 physics.producers.pandoraWriter2: @local::microboone_pandorawriter 
 physics.producers.pandoraWriter2.HitFinderModuleLabel: "pandoraCosmicKHitRemoval" 
-physics.producers.pandoraWriter2.ConfigFile: "MyPandoraSettings_Write_post_INDEX.xml" 
+physics.producers.pandoraWriter2.ConfigFile: "MyPandoraSettings_Write_cosmic2.xml" 
 
 services.TFileService.fileName: "reco_stage_2_hist.root"
 physics.reco: [ pandoraWriter1, @sequence::microboone_reco_mcc7_pandoraCosmic, pandoraWriter2 ]

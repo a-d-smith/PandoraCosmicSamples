@@ -74,7 +74,7 @@ do
  
     index=$(($index + 1))
   fi
-done < /pnfs/uboone/scratch/users/$USER_NAME/$project'_'$nuance/detsim/events.list
 
+done < /pnfs/uboone/scratch/users/$USER_NAME/$project'_'$nuance/detsim/events.list
 
 
