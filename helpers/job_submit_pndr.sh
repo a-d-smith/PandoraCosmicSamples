@@ -51,7 +51,7 @@ fi
 # Submit the jobs to the grid manually
 mkdir /pnfs/uboone/scratch/users/$USER_NAME/$project'_'$nuance/pndr
 
-inlist=`find /pnfs/uboone/scratch/users/$USER_NAME/${project}_${nuance}/sig/ -mindepth 1 -maxdepth 1 -type d`
+find /pnfs/uboone/scratch/users/$USER_NAME/${project}_${nuance}/sig/ -mindepth 1 -maxdepth 1 -type d > $WORKING_DIR/projects/$project/$nuance/inlist
 
 while read line;
 do
@@ -68,6 +68,7 @@ do
   sed -i -e 's,NUANCE,'`echo $nuance`',g' $WORKING_DIR/projects/$project/$nuance/job_grid_pndr_cosmic_${project}_${nuance}_${index}.sh
   sed -i -e 's,INDEX,'`echo $index`',g' $WORKING_DIR/projects/$project/$nuance/job_grid_pndr_cosmic_${project}_${nuance}_${index}.sh
 
-  jobsub_submit -N 1 --OS=SL6 --group uboone --role=Analysis file://$WORKING_DIR/projects/$project/$nuance/job_grid_pndr_cosmic_${project}_${nuance}_${index}.sh 
-done < $inlist
+  jobsub_submit -N 1 --OS=SL6 --group uboone --role=Analysis file://$WORKING_DIR/projects/$project/$nuance/job_grid_pndr_cosmic_${project}_${nuance}_${index}.sh
+
+done < $WORKING_DIR/projects/$project/$nuance/inlist
 
