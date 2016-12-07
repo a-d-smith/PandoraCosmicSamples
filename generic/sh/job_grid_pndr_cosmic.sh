@@ -9,7 +9,7 @@ export INDIR=/pnfs/uboone/scratch/users/USER_NAME/PROJECT_NUANCE/sig/INDEX
 export OUTDIR=/pnfs/uboone/scratch/users/USER_NAME/PROJECT_NUANCE/pndr/INDEX
 
 ifdh cp ${INDIR}/output_signal_processing.root my_file.root 
-ifdh cp ${USRDIR}/my_pandora_writer.fcl my_pandora_writer.fcl 
+ifdh cp ${WORKINGDIR}/generic/fcl/my_pandora_writer.fcl my_pandora_writer.fcl 
 ifdh cp ${WORKINGDIR}/generic/xml/MyPandoraSettings_Write_cosmic1.xml MyPandoraSettings_Write_cosmic1.xml
 ifdh cp ${WORKINGDIR}/generic/xml/MyPandoraSettings_Write_cosmic2.xml MyPandoraSettings_Write_cosmic2.xml 
 
