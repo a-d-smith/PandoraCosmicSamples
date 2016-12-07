@@ -13,7 +13,7 @@
     <!--algorithm type = "LArEventReading">
         <EventFileName>INPUT_XML_OR_PNDR_FILE</EventFileName>
         <ShouldReadEvents>true</ShouldReadEvents>
-        <SkipToEvent>0</SkipToEvent>
+        <SkipToEvent>0</SkipToEvent> 
     </algorithm-->
 
      <algorithm type = "LArEventWriting">
